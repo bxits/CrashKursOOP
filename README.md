@@ -1,7 +1,7 @@
 # CrashKursOOP
 Ein Projekt, welches die Grundlagen die OOP erklärt.
 
-In diesen Projekt lernen Sie: 
+Level_1, 11c786d7 - In diesen Projekt lernen Sie: 
 - Klassen und Ableitungen
 - abstrakte Klasse
 - C#-Properties
