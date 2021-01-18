@@ -6,6 +6,7 @@ namespace CrashKursOOP
 {
     abstract class Gebaeude
     {
+        protected double _qmZahl;
         private string _adresse;
         public string Adresse
         {
@@ -21,10 +22,16 @@ namespace CrashKursOOP
                 return _adresse;
             }
         }
+
+        private void Ausbauen()
+        {
+            _qmZahl = _qmZahl + 5.4;
+        }
     }
 
     class Haus : Gebaeude
     {
+        private Haustuere _meineHaustuere;
         private int _stockwerke;
         private List<Bewohner> _hausBewohner;
         public int Stockwerke
@@ -42,11 +49,15 @@ namespace CrashKursOOP
         public Haus()
         {
             _hausBewohner = new List<Bewohner>();
+            
+            //Komposition => Eigenschaften werden im Konstruktor angelegt.
+            _meineHaustuere = new Haustuere(this);
         }
 
         public void Einziehen(Bewohner b)
         {
             _hausBewohner.Add(b);
+            _qmZahl -= 20.0;
         }
 
         public void Ausziehen(Bewohner b)
@@ -63,7 +74,14 @@ namespace CrashKursOOP
 
     class Ferienhaus : Haus
     {
+        //einfache Assoziation auf WLAN.
+        private WLAN _wlan;
         public DateTime BelegtStart { get; set; }
         public DateTime BelegtEnde { get; set; }
+
+        public Ferienhaus()
+        {
+            _wlan = new WLAN(this);
+        }
     }
 }
